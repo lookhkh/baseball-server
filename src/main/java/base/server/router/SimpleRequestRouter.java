@@ -3,6 +3,7 @@ package base.server.router;
 import java.io.IOException;
 
 import base.server.user.connection.UserConnection;
+import base.server.user.connection.dto.UserRequest;
 import base.server.user.connection.dto.UserResponse;
 
 public class SimpleRequestRouter implements RequestRouter {
@@ -11,12 +12,9 @@ public class SimpleRequestRouter implements RequestRouter {
 	private String SERVE_MSG = "Whar Can i Do For You?\n";
 	private String MENU;
 	
-	
-	
 	public SimpleRequestRouter() {
 		MENU = "1. REQ_NEW_GAME\n"
 			  +"2. GET USER INFORMATION\n";
-		
 	}
 
 	@Override
@@ -25,9 +23,11 @@ public class SimpleRequestRouter implements RequestRouter {
 		try {
 			
 			printWelcomeAndServeMenu(con);
-			
+			UserRequest req =  con.read();
+			System.out.println(req);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
 		

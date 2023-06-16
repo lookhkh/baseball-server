@@ -1,5 +1,7 @@
 package base.server.user.connection;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -11,14 +13,14 @@ import base.server.user.connection.dto.UserResponse;
 public class BlockingUserConnection implements UserConnection {
 
 	private final Socket socket;
-	private InputStreamReader r;
-	private OutputStreamWriter w;
+	private BufferedReader r;
+	private BufferedWriter w;
 
 	public BlockingUserConnection(Socket socket) {
 		this.socket = socket;
 		try {
-			this.r = new InputStreamReader(this.socket.getInputStream());
-			this.w = new OutputStreamWriter(this.socket.getOutputStream());
+			this.r = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+			this.w = new BufferedWriter(new OutputStreamWriter(this.socket.getOutputStream()));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -33,10 +35,13 @@ public class BlockingUserConnection implements UserConnection {
 			}
 		}
 	}
-
+	
 	@Override
 	public UserRequest read() throws IOException {
-		return null;
+		String returnStr = this.r.readLine();
+		System.out.printf("%s send %s\n",this.socket.getRemoteSocketAddress(),returnStr );
+		return new UserRequest( returnStr );
+		
 	}
 
 	@Override
