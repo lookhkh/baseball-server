@@ -59,4 +59,18 @@ public class BlockingUserConnection implements UserConnection {
 	public void flush() throws IOException {
 		this.w.flush();
 	}
+
+	@Override
+	public void close() throws IOException {
+		this.socket.close();
+		this.r.close();
+		this.w.close();
+	}
+
+	@Override
+	public String toString() {
+		return "con [socket=" + socket;
+	}
+	
+	
 }

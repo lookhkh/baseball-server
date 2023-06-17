@@ -2,6 +2,8 @@ package base.server.user.connection.dto;
 
 import java.util.Arrays;
 
+import base.server.user.connection.UserConnection;
+
 /*
  * 1. 게임생성
  * req userId
@@ -14,12 +16,10 @@ import java.util.Arrays;
 public class UserRequest {
 	
 	private final String[] VALID_USER_REQ = new String[] {"REQ","FIND"};
-	
 	private final String original;
 	private String type;
 		
 	public UserRequest(String original) {
-		
 		this.original = original;
 		
 		String[] req = this.original.split(" ");
@@ -33,8 +33,7 @@ public class UserRequest {
 			throw new RuntimeException(String.format("User parameter is Not valid. %s", req[0]));
 		};
 		
-		this.type = req[0];
-		
+		this.type = req[0];		
 	}
 
 	private boolean validateIfValidRequestType(String[] req) {
