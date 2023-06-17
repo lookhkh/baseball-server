@@ -21,13 +21,18 @@ public class SimpleRequestRouter implements RequestRouter {
 	public void handle(UserConnection con) {
 		System.out.printf("router get socket %s\n", con);
 		try {
-			
 			printWelcomeAndServeMenu(con);
-			UserRequest req =  con.read();
-			System.out.println(req);
+			while(true) {
+				try {
+					UserRequest req =  con.read();
+					System.out.println(req);
+						
+				}catch(RuntimeException e) {
+					e.printStackTrace();
+					con.writeAndFlush(new UserResponse("Invalid user Request. try again"));
+				}
+			}
 		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
 		

@@ -41,6 +41,6 @@ public class DefaultBaseBallServer implements BaseballServer {
 
 	public void close() {
 		this.isClose = true;
-		this.ex.shutdown();
+		this.ex.shutdown();;
 	}
 }
