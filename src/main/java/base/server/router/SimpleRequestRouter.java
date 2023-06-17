@@ -33,7 +33,7 @@ public class SimpleRequestRouter implements RequestRouter {
 					UserRequest req =  con.read();
 					System.out.printf("[%s] get %s\n",Thread.currentThread().getName(),req.toString());
 					
-					UserRequestHandler handler =  factory.getHandler(req);
+					UserRequestHandler handler =  factory.getHandler(req, con);
 					
 					handler.handle(req ,con);
 					

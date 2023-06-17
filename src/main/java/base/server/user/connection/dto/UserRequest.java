@@ -35,6 +35,10 @@ public class UserRequest {
 		
 		this.type = req[0];		
 	}
+	
+	public String getReqType() {
+		return this.type;
+	}
 
 	private boolean validateIfValidRequestType(String[] req) {
 		for(int i=0; i<req.length; i++) {
