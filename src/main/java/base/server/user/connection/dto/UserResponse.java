@@ -12,8 +12,10 @@ public class UserResponse {
 	public String getMsg() {
 		return msg;
 	}
-	
-	
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "UserResponse [msg=" + msg + "]";
+	}
 }

@@ -8,6 +8,7 @@ import java.util.concurrent.ExecutorService;
 import base.server.router.RequestRouter;
 import base.server.router.SimpleRequestRouter;
 import base.server.user.connection.BlockingUserConnection;
+import base.server.user.connection.ProxyUserConnection;
 
 public class DefaultBaseBallServer implements BaseballServer {
 	
@@ -30,7 +31,7 @@ public class DefaultBaseBallServer implements BaseballServer {
 				Socket socket = serverSocket.accept();
 				ex.submit(()->{
 					System.out.printf("%s handle %s",Thread.currentThread().getName(),socket.getInetAddress().getHostAddress());
-					router.handle(new BlockingUserConnection(socket));	
+					router.handle(new ProxyUserConnection(new BlockingUserConnection(socket)));	
 				});
 			}
 		} catch (IOException e) {

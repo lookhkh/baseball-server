@@ -1,4 +1,4 @@
-package base.server.router.handler;
+package base.server.router.handler.impls;
 
 import base.server.user.connection.UserConnection;
 import base.server.user.connection.dto.UserRequest;

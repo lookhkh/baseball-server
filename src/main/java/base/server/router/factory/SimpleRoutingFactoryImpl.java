@@ -1,8 +1,8 @@
 package base.server.router.factory;
 
-import base.server.router.handler.FindUserInfoHandler;
-import base.server.router.handler.ReqNewGameHanlder;
 import base.server.router.handler.UserRequestHandler;
+import base.server.router.handler.impls.FindUserInfoHandler;
+import base.server.router.handler.impls.ReqNewGameHanlder;
 import base.server.user.connection.UserConnection;
 import base.server.user.connection.dto.UserRequest;
 

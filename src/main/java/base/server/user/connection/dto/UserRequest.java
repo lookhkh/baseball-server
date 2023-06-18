@@ -18,7 +18,8 @@ public class UserRequest {
 	private final String[] VALID_USER_REQ = new String[] {"REQ","FIND"};
 	private final String original;
 	private String type;
-		
+	private String param;
+	
 	public UserRequest(String original) {
 		this.original = original;
 		
@@ -34,10 +35,18 @@ public class UserRequest {
 		};
 		
 		this.type = req[0];		
+		this.param = req[1];
 	}
 	
 	public String getReqType() {
 		return this.type;
+	}
+
+	/**
+	 * @return the userId
+	 */
+	public String getUserId() {
+		return this.param;
 	}
 
 	private boolean validateIfValidRequestType(String[] req) {
