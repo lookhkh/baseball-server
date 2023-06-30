@@ -3,6 +3,7 @@ package base.server.router;
 import java.io.IOException;
 import static base.consts.UserConnectionErrors.INVALID_USER_INPUT;
 import base.consts.UserConnectionErrors;
+import base.log.DefaultLogFormatter;
 import base.server.router.factory.RoutingFactory;
 import base.server.router.factory.SimpleRoutingFactoryImpl;
 import base.server.router.handler.UserRequestHandler;
@@ -25,13 +26,13 @@ public class SimpleRequestRouter implements RequestRouter {
 
 	@Override
 	public void handle(UserConnection con) {
-		System.out.printf("router get socket %s\n", con);
+		DefaultLogFormatter.print("router get socket %s\n", con.toString());
 		try {
 			printWelcomeAndServeMenu(con);
 			while(true) {
 				try {
 					UserRequest req =  con.read();
-					System.out.printf("[%s] get %s\n",Thread.currentThread().getName(),req.toString());
+					DefaultLogFormatter.print("[%s] get %s\n",Thread.currentThread().getName(),req.toString());
 					
 					UserRequestHandler handler =  factory.getHandler(req, con);
 					

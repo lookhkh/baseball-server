@@ -17,7 +17,6 @@ public class DefaultLogFormatterTest {
 		String now = DefaultLogFormatter.makeDateFormat(cur);
 		String temp = DefaultLogFormatter.makeString(message,cur);
 		String curThreadName = Thread.currentThread().getName();
-		System.out.println(temp);
 		assertTrue(temp.contains(temp));
 		assertTrue(temp.contains(now));
 		assertTrue(temp.contains(curThreadName));

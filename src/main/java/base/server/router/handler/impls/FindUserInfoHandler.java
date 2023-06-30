@@ -3,6 +3,7 @@ package base.server.router.handler.impls;
 import java.io.IOException;
 
 import base.domains.UserInfo;
+import base.log.DefaultLogFormatter;
 import base.server.router.handler.repo.UserRepoFactory;
 import base.server.router.handler.repo.UserRepository;
 import base.server.user.connection.UserConnection;
@@ -25,7 +26,7 @@ public class FindUserInfoHandler extends DefaultGameHandler {
 
 	@Override
 	public void handle(UserRequest req, UserConnection con) {
-		System.out.println("find new User");
+		DefaultLogFormatter.print("find new User");
 		try {
 			UserInfo user = userRepo.findById(req.getUserId());
 			con.writeAndFlush(new UserResponse(String.format("UserInfo : %s", user)));

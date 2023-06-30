@@ -19,4 +19,12 @@ public class DefaultLogFormatter {
 	public static void print(String message) {
 		System.out.println(DefaultLogFormatter.makeString(message,null));
 	}
+	public static void print(String format, String ...messages) {
+		String message = String.format(format, messages);
+		System.out.println(DefaultLogFormatter.makeString(message,null));
+	}
+
+	public static void printError(String message) {
+		System.err.println(DefaultLogFormatter.makeString(message,null));
+	}
 }

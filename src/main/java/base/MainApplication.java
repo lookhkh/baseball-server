@@ -2,6 +2,7 @@ package base;
 
 import java.util.concurrent.Executors;
 
+import base.log.DefaultLogFormatter;
 import base.server.BaseballServer;
 import base.server.DefaultBaseBallServer;
 import base.server.router.RequestRouter;
@@ -21,7 +22,7 @@ public class MainApplication {
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			@Override
 			public void run() {
-				System.err.println("VM Process shut down and try to close the server");
+				DefaultLogFormatter.printError("VM Process shut down and try to close the server");
 				server.close();
 			}
 		});
