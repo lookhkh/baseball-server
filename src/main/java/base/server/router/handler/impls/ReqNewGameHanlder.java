@@ -12,6 +12,7 @@ public class ReqNewGameHanlder extends DefaultGameHandler {
 	@Override
 	public void handle(UserRequest req, UserConnection con) {
 		System.out.println("req new game");
+		
 		this.close();
 	}
 	

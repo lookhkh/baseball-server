@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import base.log.DefaultLogFormatter;
 import base.server.router.factory.RoutingFactory;
 import base.server.router.factory.SimpleRoutingFactoryImpl;
 import base.server.router.handler.UserRequestHandler;
