@@ -8,11 +8,9 @@ public class UserResponse {
 		this.msg = msg;
 	}
 
-
 	public String getMsg() {
 		return msg;
 	}
-
 
 	@Override
 	public String toString() {
