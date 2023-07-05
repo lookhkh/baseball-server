@@ -1,6 +1,6 @@
 package base.server.router.handler.repo;
 
-import base.server.router.handler.repo.impl.JpaUserRepoImpl;
+import base.server.router.handler.repo.impls.jpa.JpaUserRepoImpl;
 
 public class UserRepoFactory {
 	

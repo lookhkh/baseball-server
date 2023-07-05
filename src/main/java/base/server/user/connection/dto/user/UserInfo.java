@@ -1,4 +1,4 @@
-package base.domains;
+package base.server.user.connection.dto.user;
 
 public class UserInfo {
 

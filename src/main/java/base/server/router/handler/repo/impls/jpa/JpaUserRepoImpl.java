@@ -1,4 +1,4 @@
-package base.server.router.handler.repo.impl;
+package base.server.router.handler.repo.impls.jpa;
 
 import java.util.Optional;
 
@@ -7,10 +7,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import base.domains.UserInfo;
 import base.log.DefaultLogFormatter;
-import base.server.router.handler.domains.UserInfoDto;
 import base.server.router.handler.repo.UserRepository;
+import base.server.router.handler.repo.impls.jpa.domains.UserInfoDto;
+import base.server.user.connection.dto.user.UserInfo;
 
 public class JpaUserRepoImpl implements UserRepository {
 	

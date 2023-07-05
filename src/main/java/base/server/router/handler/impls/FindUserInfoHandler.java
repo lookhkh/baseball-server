@@ -2,13 +2,13 @@ package base.server.router.handler.impls;
 
 import java.util.Optional;
 
-import base.domains.UserInfo;
 import base.log.DefaultLogFormatter;
 import base.server.router.handler.repo.UserRepoFactory;
 import base.server.router.handler.repo.UserRepository;
 import base.server.user.connection.UserConnection;
 import base.server.user.connection.dto.UserRequest;
 import base.server.user.connection.dto.UserResponse;
+import base.server.user.connection.dto.user.UserInfo;
 
 public class FindUserInfoHandler extends DefaultGameHandler {
 	
