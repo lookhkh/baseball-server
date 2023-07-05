@@ -12,7 +12,6 @@ import base.server.BaseballServer;
 import base.server.DefaultBaseBallServer;
 import base.server.router.RequestRouter;
 import base.server.router.SimpleRequestRouter;
-import base.server.router.handler.repo.impls.jpa.domains.UserInfoDto;
 
 public class MainApplication {
 
