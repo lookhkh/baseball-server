@@ -1,4 +1,4 @@
-package base.server.router.handler.repo;
+package base.server.router.repo;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package base.server.router.handler.repo.impls.jpa.domains;
+package base.server.router.repo.impls.jpa.domains;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
