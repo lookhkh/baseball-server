@@ -2,20 +2,28 @@ package base;
 
 import java.util.concurrent.Executors;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
 import base.log.DefaultLogFormatter;
 import base.server.BaseballServer;
 import base.server.DefaultBaseBallServer;
 import base.server.router.RequestRouter;
 import base.server.router.SimpleRequestRouter;
+import base.server.router.handler.domains.UserInfoDto;
 
 public class MainApplication {
 
 	public static void main(String[] args) {
+		
 		RequestRouter router = new SimpleRequestRouter(null);
 		BaseballServer server = new DefaultBaseBallServer(Executors.newFixedThreadPool(50), router);
 		server.start(8000);
 		
 		addShutDownHook(server);
+		
 	}
 
 	private static void addShutDownHook(BaseballServer server) {

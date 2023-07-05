@@ -1,10 +1,12 @@
 package base.server.router.handler.repo;
 
+import java.util.Optional;
+
 import base.domains.UserInfo;
 
 public interface UserRepository {
 
-	UserInfo findById(String userId);
+	Optional<UserInfo> findById(String userId);
 
 	
 }

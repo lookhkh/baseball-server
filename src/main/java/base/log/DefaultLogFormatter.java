@@ -24,6 +24,11 @@ public class DefaultLogFormatter {
 		System.out.println(DefaultLogFormatter.makeString(message,null));
 	}
 
+	public static void printError(Exception e, String message) {
+		e.printStackTrace();
+		DefaultLogFormatter.printError(message);
+	}
+	
 	public static void printError(String message) {
 		System.err.println(DefaultLogFormatter.makeString(message,null));
 	}

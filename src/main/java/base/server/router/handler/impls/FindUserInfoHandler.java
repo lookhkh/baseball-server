@@ -1,6 +1,6 @@
 package base.server.router.handler.impls;
 
-import java.io.IOException;
+import java.util.Optional;
 
 import base.domains.UserInfo;
 import base.log.DefaultLogFormatter;
@@ -28,14 +28,16 @@ public class FindUserInfoHandler extends DefaultGameHandler {
 	public void handle(UserRequest req, UserConnection con) {
 		DefaultLogFormatter.print("find new User");
 		try {
-			UserInfo user = userRepo.findById(req.getUserId());
-			con.writeAndFlush(new UserResponse(String.format("UserInfo : %s", user)));
-		} catch (IOException e) {
+			
+			Optional<UserInfo> user = userRepo.findById(req.getUserId());
+			UserResponse r = new UserResponse(user.isPresent()?String.format("UserInfo : %s", user.get()):String.format("No UserInfo about %s", req.getUserId()));
+			con.writeAndFlush(r);
+		
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			this.close();
 		}
-				
 	}
 
 	
