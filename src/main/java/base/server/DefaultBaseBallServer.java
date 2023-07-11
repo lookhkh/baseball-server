@@ -31,7 +31,7 @@ public class DefaultBaseBallServer implements BaseballServer {
 				
 				Socket socket = serverSocket.accept();
 				ex.submit(()->{
-					DefaultLogFormatter.print("%s handle %s",Thread.currentThread().getName(),socket.getInetAddress().getHostAddress());
+					DefaultLogFormatter.print("handle %s",socket.getInetAddress().getHostAddress());
 					router.handle(new ProxyUserConnection(new BlockingUserConnection(socket)));	
 				});
 			}
