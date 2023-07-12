@@ -1,4 +1,4 @@
-package base.server.router.handler.newGame.dto;
+package base.server.router.handler.newGame.vo;
 
 import java.io.IOException;
 import java.util.Arrays;

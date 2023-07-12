@@ -5,8 +5,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 import base.log.DefaultLogFormatter;
-import base.server.router.handler.newGame.dto.MatchingTuple;
-import base.server.router.handler.newGame.dto.WatingPlayer;
+import base.server.router.handler.newGame.vo.MatchingTuple;
+import base.server.router.handler.newGame.vo.WatingPlayer;
 import base.server.user.connection.UserConnection;
 
 public class GameMatchingManager {
