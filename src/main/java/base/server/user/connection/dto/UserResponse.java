@@ -5,7 +5,7 @@ public class UserResponse {
 	private final String msg;
 
 	public UserResponse(String msg) {
-		this.msg = msg;
+		this.msg = msg+"\n";
 	}
 
 	public String getMsg() {

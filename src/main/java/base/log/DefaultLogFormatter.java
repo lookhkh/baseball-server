@@ -23,6 +23,10 @@ public class DefaultLogFormatter {
 		String message = String.format(format, messages);
 		System.out.println(DefaultLogFormatter.makeString(message,null));
 	}
+	public static void print(String format, Object ...messages) {
+		String message = String.format(format, messages.toString());
+		System.out.println(DefaultLogFormatter.makeString(message,null));
+	}
 
 	public static void printError(Exception e, String message) {
 		e.printStackTrace();

@@ -12,7 +12,7 @@ public class SimpleRoutingFactoryImpl implements RoutingFactory {
 	public UserRequestHandler getHandler(UserRequest user, UserConnection con) {
 		
 		if(user.getReqType().equalsIgnoreCase("req")) {
-			return new ReqNewGameHanlder(user, con);
+			return new ReqNewGameHanlder(user, con, null);
 		}
 		
 		if(user.getReqType().equalsIgnoreCase("find")) {
