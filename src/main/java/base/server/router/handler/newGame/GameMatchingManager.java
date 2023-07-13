@@ -1,6 +1,7 @@
 package base.server.router.handler.newGame;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -13,6 +14,7 @@ public class GameMatchingManager {
 	
 	private final ConcurrentLinkedQueue<WatingPlayer> lists;
 	private final ScheduledExecutorService service;
+	private final ExecutorService executor;
 	private static GameMatchingManager manager = new GameMatchingManager(null, null);
 	
 	public static GameMatchingManager getGameMatchingManager() {
@@ -22,6 +24,7 @@ public class GameMatchingManager {
 	private GameMatchingManager(ConcurrentLinkedQueue<WatingPlayer> lists, ScheduledExecutorService service) {
 		this.lists = lists==null? new ConcurrentLinkedQueue<>(): lists;
 		this.service = service==null?Executors.newScheduledThreadPool(1):service;
+		this.executor = Executors.newFixedThreadPool(100);
 	}
 	
 	public boolean isAnyGameAvailable() {
@@ -43,11 +46,13 @@ public class GameMatchingManager {
 			player.cancelSchedule();
 			DefaultLogFormatter.print(String.format("[%s] player find matching user against [%s]", con, player));
 			
-			MatchingTuple tuple = new MatchingTuple(player.getConnection(), con);
-			tuple.notifyGameOver();
-		}else {
-			this.joinWatingList(con);
+			MatchingTuple tuple = new MatchingTuple(player.getConnection(), con, executor);
+			tuple.startNewGame();
+			return;
 		}
+		
+		this.joinWatingList(con);
+		
 		
 	}
 	

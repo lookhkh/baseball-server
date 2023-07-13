@@ -71,6 +71,11 @@ public class BlockingUserConnection implements UserConnection {
 	public String toString() {
 		return "con [socket=" + socket;
 	}
+
+	@Override
+	public boolean isConnectionOkay() {
+		return this.socket.isConnected();
+	}
 	
 	
 }

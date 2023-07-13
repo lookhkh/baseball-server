@@ -12,5 +12,6 @@ public interface UserConnection {
 	public void write(UserResponse res) throws IOException;
 	public void flush() throws IOException;
 	public void close() throws IOException;
+	public boolean isConnectionOkay();
 	
 }

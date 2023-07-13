@@ -51,5 +51,12 @@ public class ProxyUserConnection implements UserConnection {
 		
 	}
 
+	@Override
+	public boolean isConnectionOkay() {
+		return this.proxy.isConnectionOkay();
+	}
+	
+	
+
 	
 }
