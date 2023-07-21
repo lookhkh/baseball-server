@@ -19,6 +19,9 @@ public class DefaultLogFormatter {
 	public static void print(String message) {
 		System.out.println(DefaultLogFormatter.makeString(message,null));
 	}
+	public static void print(Object message) {
+		System.out.println(DefaultLogFormatter.makeString(message.toString(),null));
+	}
 	public static void print(String format, String ...messages) {
 		String message = String.format(format, messages);
 		System.out.println(DefaultLogFormatter.makeString(message,null));

@@ -3,6 +3,7 @@ package base.server.user.connection.dto;
 import java.util.Arrays;
 
 import base.server.user.connection.UserConnection;
+import base.server.user.connection.dto.util.ReqParam;
 
 /*
  * 1. 게임생성
@@ -15,7 +16,6 @@ import base.server.user.connection.UserConnection;
  * */
 public class UserRequest {
 	
-	private final String[] VALID_USER_REQ = new String[] {"REQ","FIND"};
 	private final String original;
 	private String type;
 	private String param;
@@ -51,8 +51,9 @@ public class UserRequest {
 
 	private boolean validateIfValidRequestType(String[] req) {
 		for(int i=0; i<req.length; i++) {
+			ReqParam[] VALID_USER_REQ = ReqParam.getParams();
 			for(int j=0; j<VALID_USER_REQ.length; j++) {
-				if(req[i].equalsIgnoreCase(VALID_USER_REQ[j])) {
+				if(req[i].equalsIgnoreCase(VALID_USER_REQ[j].type)) {
 					return true;
 				}
 			}
@@ -63,7 +64,9 @@ public class UserRequest {
 
 	@Override
 	public String toString() {
-		return "UserRequest [VALID_USER_REQ=" + Arrays.toString(VALID_USER_REQ) + ", original=" + original + ", type="
-				+ type + "]";
+		return "UserRequest [original=" + original + ", type=" + type + ", param=" + param + "]";
 	}
+
+	
 }
+

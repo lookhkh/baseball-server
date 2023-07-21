@@ -5,8 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
+import base.log.DefaultLogFormatter;
 import base.server.user.connection.UserConnection;
+import base.server.user.connection.dto.UserRequest;
 import base.server.user.connection.dto.UserResponse;
+import base.server.user.connection.dto.util.ReqParam;
 
 public class MatchingTuple {
 
@@ -40,8 +43,6 @@ public class MatchingTuple {
 	public void startNewGame() {
 		
 		this.requestEachNumber();
-		
-		this.notifyGameOver();
 	}
 
 	private void requestEachNumber() {
@@ -52,6 +53,18 @@ public class MatchingTuple {
 				while(true) {
 					try {
 						t.writeAndFlush(new UserResponse("What is Your number?"));
+						UserRequest numberPerEach = t.read();
+						
+						DefaultLogFormatter.print(numberPerEach);
+
+						if(isProperParam(numberPerEach)) {
+							
+						}else {
+							System.out.println("2");
+							continue;
+						}
+						
+						
 						break;
 					}catch(IOException e) {
 						e.printStackTrace();
@@ -63,6 +76,12 @@ public class MatchingTuple {
 			
 		});
 	
+	}
+
+	private boolean isProperParam(UserRequest req) {
+//		if(req.getReqType().equals(ReqParam.NUMBER.type)) return true;
+//		return false;
+		return true;
 	}
 
 	private void handleIfConnectionSet() {
